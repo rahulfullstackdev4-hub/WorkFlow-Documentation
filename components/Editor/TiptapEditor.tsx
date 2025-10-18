@@ -21,9 +21,6 @@ import { toast } from "sonner";
 interface TiptapEditorProps {
   content: string;
   onChange: (content: string) => void;
-  onAISuggest?: () => void;
-  onAISummarize?: () => void;
-  onAIGenerate?: () => void;
   placeholder?: string;
   className?: string;
 }
@@ -31,9 +28,6 @@ interface TiptapEditorProps {
 export function TiptapEditor({
   content,
   onChange,
-  onAISuggest,
-  onAISummarize,
-  onAIGenerate,
   placeholder = "Start writing your workflow...",
   className = "",
 }: TiptapEditorProps) {
@@ -84,7 +78,7 @@ export function TiptapEditor({
       } else {
         toast.error("Failed to get AI suggestions");
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to get AI suggestions");
     } finally {
       setIsLoading(false);
@@ -109,7 +103,7 @@ export function TiptapEditor({
       } else {
         toast.error("Failed to generate summary");
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to generate summary");
     } finally {
       setIsLoading(false);
@@ -134,7 +128,7 @@ export function TiptapEditor({
       } else {
         toast.error("Failed to generate content");
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to generate content");
     } finally {
       setIsLoading(false);

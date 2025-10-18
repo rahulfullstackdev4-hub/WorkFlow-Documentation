@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
-import { ArrowLeft, Save, Eye, Share, History, Clock, X } from "lucide-react";
+import { ArrowLeft, Eye, Share, History, Clock, X } from "lucide-react";
 import Link from "next/link";
 import { toast } from "sonner";
 import { debounce } from "lodash";
@@ -53,7 +53,7 @@ export default function EditWorkflowPage() {
         toast.error("Workflow not found");
         router.push("/workflows");
       }
-    } catch (error) {
+    } catch {
       toast.error("Failed to load workflow");
       router.push("/workflows");
     } finally {
@@ -77,7 +77,7 @@ export default function EditWorkflowPage() {
         } else {
           toast.error("Failed to save changes");
         }
-      } catch (error) {
+      } catch {
         toast.error("Failed to save changes");
       } finally {
         setSaving(false);
